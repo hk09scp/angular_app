@@ -19,6 +19,9 @@ export class HelloComponent implements OnInit {
   count: number;
   input: string;
   visible: boolean;
+  data: string[];
+  switch: string;
+  nowClass: any;
   //now: Date;
   //styleClass: string;
 
@@ -35,10 +38,21 @@ export class HelloComponent implements OnInit {
 
   ngOnInit() {
     this.title = 'Hello-app';
-    this.message = 'please type...';
+    this.message = 'Font size';
     this.count = 0;
     this.input = '';
     this.visible = true;
+    this.data = [
+      'first thing.',
+      'second thing.',
+      'third thing',
+    ];
+    this.switch = 'one';
+    this.nowClass = {
+      'thin':false,
+      'large':false,
+      'frame':false,
+    };
     //this.message = 'This is My First Component!!';
     //this.styleClass = 'red';
   }
@@ -48,9 +62,20 @@ export class HelloComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  doType(val:string){
+  doType(val:string) {
     this.input =  val;
     this.message = 'you type: ' + this.input;
+  }
+
+  doSelect(val:string) {
+    this.switch = val;
+  }
+
+  check(c1, c2, c3) {
+    this.nowClass.thin = c1;
+    this.nowClass.large = c2;
+    this.nowClass.frame = c3;
+    this.message = c1 + ',' + c2 + ',' + c3;
   }
 
   /*
