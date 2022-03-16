@@ -1,0 +1,40 @@
+<div id="body">
+  <h1>{{title}}</h1>
+  <p>{{message}}</p>
+
+  <form [(formGroup)]="myControl" (ngSubmit)="onSubmit()">
+    <table>
+      <tr>
+        <th>Name</th>
+        <td>
+          <div *ngIf="name.errors != null && name.errors.required != null">Name is required.</div>
+          <div *ngIf="name.errors != null && name.errors.alpha != null">Only Charactors are available.</div>
+          <div><input type="text" formControlName="name"></div>
+        </td>
+      </tr>
+      <tr>
+        <th>Mail</th>
+        <td>
+          <div *ngIf="mail.errors != null && mail.errors.email != null">Email is required.</div>
+          <div><input type="text" formControlName="mail"></div>
+        </td>
+      </tr>
+      <tr>
+        <th>Age</th>
+        <td>
+          <div *ngIf="age.errors != null && age.errors.min != null">Input 1 or over.</div>
+          <div *ngIf="age.errors != null && age.errors.max != null">Input 150 or under.</div>
+          <div *ngIf="age.errors != null && age.errors.even != null">Only evens are available.</div>
+          <div><input type="number" formControlName="age"></div>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td>
+          <input [disabled]="myControl.invalid" type="submit" value="click">
+        </td>
+      </tr>
+    </table>
+  </form>
+
+</div>

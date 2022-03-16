@@ -4,10 +4,22 @@
   <input type="checkbox" #ck1 (change)="check(ck1.checked, ck2.checked, ck3.checked);">Thin
   <input type="checkbox" #ck2 (change)="check(ck1.checked, ck2.checked, ck3.checked);">Large
   <input type="checkbox" #ck3 (change)="check(ck1.checked, ck2.checked, ck3.checked);">Frame
+  <p [ngStyle]="nowStyle">ngStyle:{{message}}</p>
+  <input type="text" #in1 (change)="checkStyle(in1.value, in2.value, in3.value);">
+  <br>
+  <input type="text" #in2 (change)="checkStyle(in1.value, in2.value, in3.value);">
+  <br>
+  <input type="text" #in3 (change)="checkStyle(in1.value, in2.value, in3.value);">
+  <br>
   <p *ngIf="visible" (click)="doClick()" class="red">
     This is TRUE message.</p>
   <p *ngIf="visible == false" (click)="doClick()">
     This is FALSE message.</p>
+  <p>TYPE:{{text1}}</p>
+  <input type="text" [(ngModel)]="text1" />
+  <p>TYPE2:{{myControl.value}}</p>
+  <input type="text" [formControl]="myControl" />
+  <button (click)="doClick()">Click</button>
   <ul>
     <li *ngFor="let item of data">{{item}}</li>
   </ul>
@@ -22,4 +34,66 @@
     <option>two</option>
     <option>three</option>
   </select>
+
+  <form [(formGroup)]="myGroup" (ngSubmit)="onSubmit()">
+    <table>
+      <tr><th>Name</th><td>
+        <div><input type="text" formControlName="name"></div>
+      </td></tr>
+      <tr><th>Mail</th><td>
+        <div><input type="text" formControlName="mail"></div>
+      </td></tr>
+      <tr><th>Age</th><td>
+        <div><input type="number" formControlName="age"></div>
+      </td></tr>
+      <tr><th></th><td>
+        <input type="submit" value="click">
+      </td></tr>
+    </table>
+  </form>
+
+  <form [formGroup]="myGroup2" (submit)="onSubmit2()">
+    <div>
+      <label><input type="checkbox" formControlName="control">Check Box</label>
+    </div>
+    <div>
+      <input type="submit" value="click">
+    </div>
+  </form>
+
+  <form [formGroup]="myGroup3" (submit)="onSubmit3()">
+    <div>
+      <label><input type="radio" value="male" formControlName="control">male</label>
+      <label><input type="radio" value="female" formControlName="control">female</label>
+    </div>
+    <div>
+      <input type="submit" value="click">
+    </div>
+  </form>
+
+  <form [formGroup]="myGroup4" (submit)="onSubmit4()">
+    <div>
+      <select formControlName="control">
+        <option>Windows</option>
+        <option>macOS</option>
+        <option>Linux</option>
+        <option>ChromeOS</option>
+      </select>
+      <input type="submit" value="click">
+    </div>
+  </form>
+
+  <form [formGroup]="myGroup5" (submit)="onSubmit5()">
+    <div>
+      <select formControlName="control" size="5" multiple>
+        <option>android</option>
+        <option>iOS</option>
+        <option>blackberry</option>
+        <option>symbian</option>
+        <option>Fucsia</option>
+      </select>
+      <input type="submit" value="click">
+    </div>
+  </form>
+
 </div>
