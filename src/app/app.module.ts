@@ -5,12 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { Hello2Component } from './hello2/hello2.component';
-
+import { Hello3Component } from './hello3/hello3.component';
+import { MessageComponent } from './message/message.component';
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
-    Hello2Component
+    Hello2Component,
+    Hello3Component,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +21,6 @@ import { Hello2Component } from './hello2/hello2.component';
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [Hello2Component]
+  bootstrap: [Hello3Component]
 })
 export class AppModule { }
