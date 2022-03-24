@@ -1,4 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<!--The content below is only a placeholder and can be replaced.>
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
@@ -16,5 +16,18 @@
   <li>
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
-</ul>
+</ul-->
 
+<nav>
+  <div>
+    <a routerLink="">Home</a> |
+    <a [routerLink]="['hello']" [queryParams]="{id:123, name:'Hana'}">Hello</a> |
+    <a [routerLink]="['msg', '123']">Message</a>
+  </div>
+</nav>
+<div class="content">
+  <p>Router-Outlet</p>
+  <router-outlet><p>{{message}}</p></router-outlet>
+  <hr>
+  <p>This is angular sample page.</p>
+</div>

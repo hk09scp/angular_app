@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MycheckService } from '../mycheck.service';
 
 @Component({
@@ -12,15 +13,11 @@ export class Hello4Component implements OnInit {
   message: string;
 
 
-  constructor(private service: MycheckService) {
-    service.push('hello data');
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.title = 'Hello-app';
-    //this.message = this.service.hello();
-    //this.message = 'data size; ' + this.service.size;
-    this.message = this.service.json;
+    this.message = 'params: ' + JSON.stringify(this.route.snapshot.queryParamMap);
   }
 
 }

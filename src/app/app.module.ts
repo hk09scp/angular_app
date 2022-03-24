@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
@@ -10,6 +11,12 @@ import { Hello4Component } from './hello4/hello4.component';
 import { MessageComponent } from './message/message.component';
 import { MystyleDirective } from './mystyle.directive';
 import { MycheckService } from './mycheck.service';
+
+const routes: Routes = [
+  { path: 'hello', component: Hello4Component },
+  { path: 'msg/:id', component: MessageComponent },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,16 +30,16 @@ import { MycheckService } from './mycheck.service';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(
+      routes,
+      { enableTracing: true }
+    )
   ],
   providers: [],
-  bootstrap: [Hello4Component]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 
-  constructor(private service: MycheckService) {
-    service.push("Leo");
-    service.push("Hana");
-    service.push("Joao");
-  }
+  constructor() {}
 }
