@@ -28,11 +28,11 @@ export class Hello3Component implements OnInit {
       alert('input only text.');
       return;
     }
-    this.msgComponent.push(this.input1);
+    //this.msgComponent.push(this.input1);
     this.input1 = '';
   }
   pop(){
-    this.msgComponent.pop();
+    //this.msgComponent.pop();
   }
 
   doClick(event) {
