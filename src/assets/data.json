@@ -1,0 +1,10 @@
+{
+    "data":"this is sample data.",
+    "list":[
+        {"name":"Leo", "mail":"leo@koba", "tel":"090-1234-5678"},
+        {"name":"Hana", "mail":"hana@koba", "tel":"090-2345-6789"},
+        {"name":"Joao", "mail":"joao@koba", "tel":"090-3456-7890"},
+        {"name":"Shiro", "mail":"shiro@koba", "tel":"090-4567-8901"},
+        {"name":"Chibi", "mail":"chibi@koba", "tel":"090-5678-90123"}
+    ]
+}

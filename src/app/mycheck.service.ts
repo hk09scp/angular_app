@@ -1,51 +1,43 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+class MyData {
+  data: string = '';
+  list: Person[] = [];
+}
+
+class Person {
+  name: string;
+  mail: string;
+  tel: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class MycheckService {
-  //private _name: string;
-  private data: string[];
+  private mydata: MyData = new MyData();
 
-  constructor() {
-    //this._name = '(no-name)';
-    this.data = [];
+  constructor(private client: HttpClient) {
+    this.client.get('/assets/data.json')
+    .subscribe((result:MyData) => {
+      this.mydata = result;
+    });
   }
 
-  push(item: string){
-    this.data.push(item);
-  }
-
-  pop(){
-    this.data.pop();
-  }
-
-  get(n: number){
-    return this.data[n];
+  get(n: number) {
+    return this.mydata.list[n];
   }
 
   get size() {
-    return this.data.length;
-  }
-
-  get json() {
-    return JSON.stringify(this.data);
+    return this.mydata.list.length;
   }
 
   get list() {
-    return JSON.parse(JSON.stringify(this.data));
+    return this.mydata.list;
   }
 
-  /*
-  get name(){
-    return this._name;
+  get data() {
+    return this.mydata.data;
   }
-  set name(name: string) {
-    this._name = name;
-  }
-
-  hello() {
-    return "Hello, " + this.name + "!!";
-  }
-  */
 }

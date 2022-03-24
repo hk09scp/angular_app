@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormControl } from '@angular/forms';
 import { MycheckService } from '../mycheck.service';
 
 @Component({
@@ -9,32 +9,28 @@ import { MycheckService } from '../mycheck.service';
   providers: [MycheckService],
 })
 export class MessageComponent implements OnInit {
-  //@Input() content: string[];
-  //@Output() action = new EventEmitter<MouseEvent>();
-  content: string[];
+  input: FormControl;
+  message: string;
 
-  constructor(private service: MycheckService, private route: ActivatedRoute) {
-    //this.content = [];
-    service.push('message data');
-  }
+  constructor(private service: MycheckService) {}
 
   ngOnInit() {
-    //this.content.push(this.service.hello());
-    this.service.push('params: ' + JSON.stringify(this.route.snapshot.paramMap));
-    this.content = this.service.list;
+    this.input = new FormControl('');
+    this.message = 'mydata list';
   }
 
-  doAction(event) {
-    //this.action.emit(event);
+  getData() {
+    return this.service.data;
   }
-  /*
-  push(item: string) {
-    this.service.name = item;
-    this.content.push(this.service.hello());
+  
+  getList() {
+    return this.service.list;
   }
-  pop() {
-    this.content.pop();
+
+  doAction(){
+    let n = parseInt(this.input.value);
+    let p = this.service.get(n);
+    this.message = JSON.stringify(p);
   }
-  */
 
 }
