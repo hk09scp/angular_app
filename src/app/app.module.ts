@@ -7,13 +7,15 @@ import { HelloComponent } from './hello/hello.component';
 import { Hello2Component } from './hello2/hello2.component';
 import { Hello3Component } from './hello3/hello3.component';
 import { MessageComponent } from './message/message.component';
+import { MystyleDirective } from './mystyle.directive';
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
     Hello2Component,
     Hello3Component,
-    MessageComponent
+    MessageComponent,
+    MystyleDirective
   ],
   imports: [
     BrowserModule,
