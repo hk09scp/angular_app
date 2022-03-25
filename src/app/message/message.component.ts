@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MycheckService } from '../mycheck.service';
+import { fromEvent } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-message',
@@ -11,12 +13,28 @@ import { MycheckService } from '../mycheck.service';
 export class MessageComponent implements OnInit {
   input: FormControl;
   message: string;
+  @ViewChild('btn') btn: ElementRef;
 
   constructor(private service: MycheckService) {}
 
   ngOnInit() {
     this.input = new FormControl('');
-    this.message = 'mydata list';
+    this.message = 'mydata list.';
+    const btn = this.btn.nativeElement;
+    fromEvent(btn, 'click')
+      .pipe(filter((res:MouseEvent, n:number) => {
+        if(res.shiftKey){
+          return false;
+        }
+        return true;
+      }))
+      .subscribe((event:MouseEvent) => {
+        this.doAction();
+      })
+  }
+
+  updateData(ck:boolean){
+    this.service.updateData(ck);
   }
 
   getData() {
