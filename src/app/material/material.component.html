@@ -1,0 +1,218 @@
+<div class="container">
+  <h1>material works!</h1>
+
+  <div>
+    <button mat-raised-button (click)="showDrag()">Click</button>
+    <p>{{message5}}</p>
+  </div>
+  
+  <div>
+    <p>{{message4}}</p>
+    <div>
+      <button mat-raised-button (click)="showSheet()">Click</button>
+    </div>
+  </div>
+
+  <div>
+    <p>tabs</p>
+    <mat-card>
+      <mat-tab-group>
+        <mat-tab label="First">
+          <h2>First tab</h2>
+          <p>This is 1st tab's contents.</p>
+        </mat-tab>
+        <mat-tab label="Second">
+          <h2>Second tab</h2>
+          <p>Thsi is 2nd tab's contents.</p>
+        </mat-tab>
+        <mat-tab label="Third">
+          <h2>Third tab</h2>
+          <p>Thsi is 3rd tab's contents.</p>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+
+  <div>
+    <p>sorted table</p>
+    <mat-card>
+      <table matSort (matSortChange)="sortData($event)">
+        <tr>
+          <th mat-sort-header="name">Name</th>
+          <th mat-sort-header="mail">Mail</th>
+          <th mat-sort-header="tel">Tel</th>
+          <th mat-sort-header="age">Age</th>
+        </tr>
+        <tr *ngFor="let item of sortedData">
+          <td>{{item.name}}</td>
+          <td>{{item.mail}}</td>
+          <td>{{item.tel}}</td>
+          <td>{{item.age}}</td>
+        </tr>
+      </table>
+    </mat-card>
+  </div>
+
+  <div>
+    <p>navigation list</p>
+    <form [formGroup]="myControl3">
+      <mat-card>
+        <mat-nav-list>
+          <a mat-list-item routerLink="">Top page</a>
+          <a mat-list-item routerLink="/hello">Hello</a>
+          <a mat-list-item routerLink="/msg">Message</a>
+        </mat-nav-list>
+      </mat-card>
+      <p>selection list</p>
+      <mat-card>
+        <mat-selection-list formControlName="list1">
+          <mat-list-option value="win">Windows</mat-list-option>
+          <mat-list-option value="mac">macOS</mat-list-option>
+          <mat-list-option value="linux">Linux</mat-list-option>
+        </mat-selection-list>
+      </mat-card>
+    </form>
+  </div>
+  <p>{{message3}}</p>
+  <button mat-button (click)="click3()">click</button>
+
+  <div>
+    <h2>material-form.</h2>
+    <mat-card>
+      <mat-card-title>Card Layout</mat-card-title>
+      <mat-card-subtitle>this is sub title text.</mat-card-subtitle>
+      <mat-card-content>
+        This is casrd layout contents.
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary">OK</button>
+        <button mat-flat-button color="accent">Continue</button>
+        <button mat-flat-button color="warn">Cancel</button>
+      </mat-card-actions>
+    </mat-card>
+    <p class="message">This is not included in the card layout.</p>
+  </div>
+
+  <div>
+    <h2>accordion</h2>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>First Panel</mat-panel-title>
+          <mat-panel-description>This is first panel.</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <h2>First Panel</h2>
+          <p>This is 1st panel contents.</p>
+        </div>
+        <mat-action-row>
+          <button mat-button>click</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Second Panel</mat-panel-title>
+          <mat-panel-description>This is second panel.</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <h2>Second Panel</h2>
+          <p>This is 2nd panel contents.</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <p class="message">This is not included in the panel.</p>
+  </div>
+
+  <div>
+    <h2>mterial-button.</h2>
+    <button mat-button>button</button>
+    <button mat-raised-button>raised button</button>
+    <button mat-flat-button>flat button</button>
+    <button mat-stroked-button>stroked button</button>
+    <br>
+    <button mat-button color="primary">Primary</button>
+    <button mat-button color="accent">Accent</button>
+    <button mat-button color="warn">Warn</button>
+    <br>
+    <button mat-raised-button>Basic</button>
+    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button color="accent">Accent</button>
+    <button mat-raised-button color="warn">Warn</button>
+    <br>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-fab>fab</button>
+    <button mat-mini-fab>fab</button>
+    <br>
+    <mat-button-toggle-group #tgl="matButtonToggleGroup" (change)="change(tgl.value)">
+      <mat-button-toggle value="one">One</mat-button-toggle>
+      <mat-button-toggle value="two">Two</mat-button-toggle>
+      <mat-button-toggle value="three">Three</mat-button-toggle>
+      <mat-button-toggle value="four">Four</mat-button-toggle>
+      <mat-button-toggle value="five">Five</mat-button-toggle>
+    </mat-button-toggle-group>
+    
+    <br>
+    
+    <form [formGroup]="myControl">
+      <!--div><mat-form-field>
+        <input type="text" matInput matType="text" formControlName="name" placeholder="your name">
+      </mat-form-field></div>
+      <div><mat-form-field>
+        <input type="number" matInput matType="number" formControlName="number" placeholder="0">
+      </mat-form-field></div>
+      <div><mat-form-field>
+        <input type="email" matInput matType="email" formControlName="email" placeholder="mail address">
+      </mat-form-field></div>
+      <button mat-raised-button (click)="click()">click</button-->
+      
+      <div><mat-checkbox formControlName="check">
+        CheckBox</mat-checkbox></div>
+      <div><mat-radio-group formControlName="radio">
+        <mat-radio-button style="margin-right:30px;" value="male">
+          male</mat-radio-button>
+        <mat-radio-button value="female">
+          female</mat-radio-button>
+      </mat-radio-group></div>
+      <button mat-raised-button (click)="click()">click</button>
+      <!--p class="message">{{message}}</p-->
+    </form>
+
+    <form [formGroup]="myControl2" style="width:200px;">
+      <div><mat-form-field>
+        <mat-select formControlName="select1">
+          <mat-option value="windows">Windows</mat-option>
+          <mat-option value="macos">macOS</mat-option>
+          <mat-option value="linux">Linux</mat-option>
+        </mat-select>
+      </mat-form-field></div>
+      <div><mat-form-field>
+        <mat-select formControlName="select2" multiple>
+          <mat-option value="windows">Windows</mat-option>
+          <mat-option value="macos">macOS</mat-option>
+          <mat-option value="linux">Linux</mat-option>
+        </mat-select>
+      </mat-form-field></div>
+      <div>
+        <mat-slider formControlName="slider1" min="0" max="100" step="0.1"></mat-slider>
+      </div>
+      <div>
+        <mat-slider formControlName="slider2" min="0" max="10" step="1"
+          thumbLabel="true" tickInterval="1"></mat-slider>
+      </div>
+      <div><mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="pick a date." formControlName="picker1">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field></div>
+      <button mat-raised-button (click)="click2()">Click</button>
+    </form>
+    <p class="message">{{message}}</p>
+
+    
+    <br>
+
+  </div>
+</div>
